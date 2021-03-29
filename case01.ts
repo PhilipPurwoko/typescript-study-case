@@ -5,7 +5,7 @@ class Database {
     }
 
     getAllData() {
-        let counter: number = 1;
+        let counter = 1;
         console.log('Displaying All Data');
         this.database.forEach(data => {
             console.log(counter + '. ' + JSON.stringify(data));
@@ -14,7 +14,7 @@ class Database {
     }
 
     findPerson(name: string) {
-        let found: boolean = false;
+        let found = false;
         this.database.forEach(data => {
             if (data.name == name) {
                 console.log('Person Found');
@@ -27,7 +27,7 @@ class Database {
     }
 
     hasAlready(name: string): boolean {
-        let hasAlready: boolean = false;
+        let hasAlready = false;
         for (const data of this.database) {
             if (data.name == name) {
                 hasAlready = true;
@@ -54,7 +54,7 @@ class Database {
         try {
             const dataCheckup: boolean = this.hasAlready(name);
             if (dataCheckup) {
-                let newDatabase: Array<{ name: string, age: number, joined: Date }> = [];
+                const newDatabase: Array<{ name: string, age: number, joined: Date }> = [];
                 this.database.forEach(data => {
                     if (data.name != name) {
                         newDatabase.push(data);
