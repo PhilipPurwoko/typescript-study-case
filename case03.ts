@@ -1,6 +1,8 @@
 class LinkedList {
     head: Vertice | null = null
+    tail: Vertice | null = null
     array: (number | string)[]
+
     constructor(array: (number | string)[]) {
         this.array = array
     }
@@ -15,6 +17,16 @@ class LinkedList {
                 newPointer = newPointer.pointing
             }
             newPointer.pointing = newVertice
+            this.tail = newVertice
+        }
+    }
+
+    addToStart(value: number | string) {
+        const pointing = this.head
+        if (pointing == null) {
+            this.head = new Vertice(value)
+        } else {
+            this.head = new Vertice(value, this.head)
         }
     }
 
@@ -41,12 +53,10 @@ class LinkedList {
 }
 
 class Vertice {
-    pointer: Vertice | null
     value: string | number
     pointing: Vertice
 
-    constructor(value: number | string, pointer: Vertice | null = null, pointing: Vertice | null = null) {
-        this.pointer = pointer
+    constructor(value: number | string, pointing: Vertice | null = null) {
         this.value = value
         this.pointing = pointing
     }
@@ -54,4 +64,8 @@ class Vertice {
 
 const linkedList = new LinkedList([1, 2, 3, 4, 5])
 linkedList.convert()
+linkedList.addToEnd(10)
+linkedList.addToEnd(15)
+linkedList.addToStart(-10)
+linkedList.addToStart(-15)
 linkedList.display()
