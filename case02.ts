@@ -14,7 +14,7 @@ class Calculator {
 
 class StatisticSupport {
     getSum(array: number[]): number {
-        let sum: number = 0
+        let sum = 0
         array.forEach(a => {
             sum += a
         })
@@ -44,13 +44,13 @@ class Statistic extends StatisticSupport {
     }
 
     mode(array: number[]): number | number[] {
-        let modes: { [key: number]: number } = {}
+        const modes: { [key: number]: number } = {}
         array.forEach((num: number) => {
             num in modes ? modes[num] += 1 : modes[num] = 1
         })
 
         let topNum: any
-        let topF: number = 0
+        let topF = 0
         for (const key in modes) {
             if (modes[key] > topF) {
                 topF = modes[key]
@@ -75,8 +75,8 @@ class Statistic extends StatisticSupport {
     variance(array: number[]): number {
         const mean: number = this.mean(array)
 
-        let distances: number[] = []
-        for (let index: number = 0; index < array.length; index++) {
+        const distances: number[] = []
+        for (let index = 0; index < array.length; index++) {
             distances.push(this.getDistance(mean, array[index]) ** 2)
         }
         return this.getSum(distances) / array.length
